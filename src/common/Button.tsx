@@ -10,7 +10,7 @@ type PropsType = {
 export const Button: React.FC<PropsType> = (props) => {
 
     const onCkick = () => {
-        if(props.onClickFunc){
+        if (props.onClickFunc) {
             props.onClickFunc()
         }
     }
@@ -22,6 +22,3 @@ export const Button: React.FC<PropsType> = (props) => {
         </button>
     </div>
 }
-
-
-

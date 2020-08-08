@@ -5,15 +5,18 @@ type propsType = {
     count: number
     increaseValue: (newCount:number) => void
     resetValue: (resetCount:number) => void
-    maxValue: string
-    startValue: string
+    minValue:number
+    maxValue:number
 }
 
 
 export const Counter:React.FC<propsType> = (props) => {
 
-    const disabledIncTrue = (props.count === parseInt(props.maxValue)) ? true : false
-    const disabledResetTrue = (props.count === parseInt(props.startValue)) ? true : false
+    const currectValue = (props.minValue < 0 || props.maxValue < 0 || props.maxValue === props.minValue)
+
+    const disabledIncTrue = (props.count === props.maxValue || currectValue) ? true : false
+    const disabledResetTrue = (props.count === props.minValue || currectValue) ? true : false
+
 
 
     const increaseValue = () => {
@@ -21,12 +24,12 @@ export const Counter:React.FC<propsType> = (props) => {
     }
 
     const resetValue = () => {
-        props.resetValue(0)
+        props.resetValue(props.minValue)
     }
 
     return <div className={'App__wrapper'}>
-        <div className={(props.count === parseInt(props.maxValue)) ? 'App__screen limited': 'App__screen'}>
-            <span>{props.count}</span>
+        <div className={(props.count === props.maxValue || currectValue) ? 'App__screen limited': 'App__screen'}>
+            {(currectValue) ? <span>incorrect value</span> : <span>{props.count}</span>}
         </div>
         <div className={'App__buttons'}>
             <Button titleButton={'increase'} onClickFunc={increaseValue} isDisabled={disabledIncTrue}/>

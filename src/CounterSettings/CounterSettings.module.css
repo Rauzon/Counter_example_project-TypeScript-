@@ -1,28 +1,44 @@
-.content
-{
-    padding: 15px;  border: 1px solid darkturquoise;  border-radius: 10px;
-}
-.content__values
-{
-    min-width: 165px;  padding: 10px;  border: 1px solid mediumturquoise;  border-radius: 10px;
-}
-.content__values__min,
-.content__values__max
-{
-    display: flex;  justify-content: space-between;
+.content {
+    padding: 15px;
+    border: 1px solid darkturquoise;
+    border-radius: 10px;
 }
 
-.content__values__min
-{
+.content__values {
+    min-width: 165px;
+    padding: 10px;
+    border: 1px solid mediumturquoise;
+    border-radius: 10px;
+}
+
+.content__values__min,
+.content__values__max {
+    display: flex;
+    justify-content: space-between;
+}
+
+.content__values__min {
     margin-bottom: 10px;
 }
 
-.content__values_input input
-{
-    width: 50px;  min-height: 30px;  text-align: center;  border: 1px solid silver;  border-radius: 10px;     outline: none;
+.content__values_input input {
+    width: 50px;
+    min-height: 30px;
+    text-align: center;
+    border: 1px solid silver;
+    border-radius: 10px;
+    outline: none;
+}
+.content__values_input.error input{
+    width: 50px;
+    min-height: 30px;
+    text-align: center;
+    border: 1px solid red;
+    background-color:rgba(230, 69, 57, 0.5) ;
+    border-radius: 10px;
+    outline: none;
 }
 
-.app__buttons
-{
+.app__buttons {
     padding: 10px;
 }

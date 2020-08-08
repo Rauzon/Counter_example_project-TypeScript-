@@ -4,12 +4,13 @@ import { Counter } from './Counter';
 import { CounterSettings } from './CounterSettings/CounterSettings';
 
 function App() {
-    //Counter component
-    const [count, setCount] = useState(0)
 
-    //CounterSettings component
-    let [startValue, setStartValue] = useState<string>('0');
-    let [maxValue, setMaxValue] = useState<string>('0');
+    // min and max value
+    const [minValue, setMinValue] = useState<number>(0)
+    const [maxValue, setMaxValue] = useState<number>(0)
+
+    //Counter component
+    const [count, setCount] = useState<number>(0)
 
     //Counter component
     const increaseValue = (newCount:number) => {
@@ -20,27 +21,21 @@ function App() {
         setCount(resetCount)
     }
 
-    //CounterSettings Component
-
-    const onChangeStartValue = (newStartValue:string) => {
-        setStartValue(newStartValue);
-    }
-
-    const onChangeMaxValue = (newMaxValue:string) => {
-        setMaxValue(newMaxValue);
+    //set min and max value
+    const onClickBtn = (startValue:string, maxValue:string) => {
+        setCount(parseInt(startValue))
+        setMinValue(parseInt(startValue))
+        setMaxValue(parseInt(maxValue))
     }
 
     return (
     <div className="App">
-      <CounterSettings startValue={startValue}
-                       maxValue={maxValue}
-                       onChangeStartValue={onChangeStartValue}
-                       onChangeMaxValue={onChangeMaxValue}/>
+      <CounterSettings onClickBtn={onClickBtn}/>
       <Counter count={count}
                increaseValue = {increaseValue}
                resetValue={resetValue}
-               startValue={startValue}
-               maxValue={maxValue}/>
+               minValue={minValue}
+               maxValue={maxValue} />
     </div>
   );
 }
