@@ -12,7 +12,7 @@ type propsType = {
 
 export const Counter:React.FC<propsType> = (props) => {
 
-    const currectValue = (props.minValue < 0 || props.maxValue < 0 || props.maxValue === props.minValue)
+    const currectValue = (props.minValue < 0 || props.maxValue < 0 || props.maxValue <= props.minValue)
 
     const disabledIncTrue = (props.count === props.maxValue || currectValue) ? true : false
     const disabledResetTrue = (props.count === props.minValue || currectValue) ? true : false

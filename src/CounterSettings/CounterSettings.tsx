@@ -9,6 +9,8 @@ type PropsType = {
 
 export const CounterSettings:React.FC<PropsType> = (props) => {
 
+    // temporary layout for values
+
     let [startValue, setStartValue] = useState<string>('0');
     let [maxValue, setMaxValue] = useState<string>('0');
 
@@ -39,8 +41,11 @@ export const CounterSettings:React.FC<PropsType> = (props) => {
 
     }
 
+    //Error for input's fields
+    const startValueInt = parseInt(startValue);
+    const maxValueInt = parseInt(maxValue);
 
-    const correctValue = (parseInt(maxValue) < 0 || parseInt(startValue) < 0)
+    const correctValue =(startValueInt < 0 || maxValueInt < 0 || startValueInt > maxValueInt)
 
     const errorStyle = (correctValue) ? `${s.content__values_input} ${s.error}` : `${s.content__values_input}`
 
