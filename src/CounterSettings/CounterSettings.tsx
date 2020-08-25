@@ -11,8 +11,17 @@ export const CounterSettings:React.FC<PropsType> = (props) => {
 
     // temporary layout for values
 
-    let [startValue, setStartValue] = useState<string>('0');
-    let [maxValue, setMaxValue] = useState<string>('0');
+    const localStartValue = localStorage.getItem('startValue')
+    const localMaxValue = localStorage.getItem('maxValue')
+
+    const correctStartValue = (!localStartValue) ? '0' : localStartValue;
+    const correctMaxValue = (!localMaxValue) ? '0' : localMaxValue;
+
+    let [startValue, setStartValue] = useState<string>(correctStartValue);
+    let [maxValue, setMaxValue] = useState<string>(correctMaxValue);
+
+    localStorage.setItem('minValue', startValue.toString())
+    localStorage.setItem('maxValue', maxValue.toString())
 
 
     //change values of input
